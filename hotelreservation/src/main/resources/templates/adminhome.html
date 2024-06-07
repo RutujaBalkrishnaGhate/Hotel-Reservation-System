@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Hotel Reservation System</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        
+
+        h1 {
+            text-align: center;
+           
+        }
+
+        .navbar {
+            background-color: #007BFF; /* Add your preferred color */
+        }
+
+        .navbar-brand, .nav-link {
+            color: #fff !important; /* Set text color to white */
+        }
+
+        .jumbotron {
+             background: url('hotel-image.jpg') no-repeat center center;
+            background-size: cover;
+            color: #fff;
+            text-align: center;
+            padding: 50px 0;
+            
+           
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px 0;
+            background-color: #f8f9fa;
+            position: relative;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <a class="navbar-brand" href="#">InnSync</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/addhotel">Add Hotel</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/managehotel">Manage Hotel</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/manageusers">Manage Users</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/">Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Jumbotron / Hero Section -->
+<div class="jumbotron">
+    <!-- <h1 class="display-4">Find Your Perfect Stay</h1>
+     <!-- --><!-- <p class="lead">Discover the best hotels for your next trip.</p -->
+    <!-- Add your image here -->
+    <img th:src="@{/hotelimage.jpeg}" alt="Hotel Image" class="img-fluid">
+</div>
+
+<!-- Content Section (Additional Sections About and Contact) -->
+<div class="container" id="about">
+    <h2>About Us</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque. Duis vulputate commodo lectus, ac blandit elit tincidunt id.</p>
+</div>
+
+<div class="container" id="contact">
+    <h2>Contact Us</h2>
+    <p>Email: info@innsync.com</p>
+    <p>Phone: +123 456 7890</p>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+    <p>&copy; 2023 InnSync</p>
+</div>
+
+<!-- Bootstrap JS (optional) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

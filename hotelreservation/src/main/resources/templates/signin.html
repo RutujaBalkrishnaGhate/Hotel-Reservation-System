@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Login Page</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+     .navbar {
+            background-color: #007BFF; /* Add your preferred color */
+        }
+
+        .navbar-brand, .nav-link {
+            color: #fff !important; /* Set text color to white */
+        }
+    
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .login-container {
+            max-width: 400px;
+            margin: auto;
+            margin-top: 100px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #007BFF;
+            
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        button {
+            width: 100%;
+        }
+        .footer {
+            text-align: center;
+            padding: 20px 0;
+            background-color: #f8f9fa;
+            position: relative;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <a class="navbar-brand" href="/">InnSync</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/signin">User Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/signup">User Sign Up</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/adminlogin">Admin Login</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<body>
+    <div class="login-container">
+        <h1>Login</h1>
+        
+        <form th:action="@{/authenticate}" method="post">
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="text" class="form-control" id="email" name="email"
+                    placeholder="Enter Email ID" autofocus="autofocus" required/>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" class="form-control" id="password" name="password"
+                    placeholder="Enter Password" required/>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Login</button>
+        </form>
+        
+        <div class="form-group">
+            <span>New user? <a href="/" th:href="@{/signup}">Register here</a></span>
+        </div>
+    </div>
+    <div class="footer">
+    <p>&copy; 2023 InnSync</p>
+</div>
+    
+
+    <!-- Include Bootstrap JS (optional) -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

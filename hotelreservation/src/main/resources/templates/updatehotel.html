@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Update Hotel Page</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .update-hotel-container {
+            max-width: 400px;
+            margin: auto;
+            margin-top: 100px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        button {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="update-hotel-container">
+        <h1>Update Hotel</h1>
+        
+        <form action="/updatedhotel" method="post" th:object="${hotel}">
+            <!-- Assuming 'hotel' is the object holding hotel information -->
+            <input type="hidden" th:field="*{hotelid}" th:value="${hotel.hotelid}"/>
+            
+
+            <div class="form-group">
+                <label for="hotelName">Hotel Name:</label>
+                <input type="text" class="form-control" id="hotelName" th:field="*{hotelname}" th:value="${hotel.hotelname}" required/>
+            </div>
+            
+
+            <div class="form-group">
+                <label for="contact">Contact:</label>
+                <input type="text" class="form-control" id="contact" th:field="*{hotelcontact}" th:value="${hotel.hotelcontact}" required/>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" th:field="*{hotelemail}" th:value="${hotel.hotelemail}" required/>
+            </div>
+
+            <div class="form-group">
+                <label for="city">City:</label>
+                <input type="text" class="form-control" id="city" th:field="*{hotelcity}" th:value="${hotel.hotelcity}" required/>
+            </div>
+
+            <div class="form-group">
+                <label for="address">Address:</label>
+                <input type="text" class="form-control" id="address" th:field="*{hoteladdress}" th:value="${hotel.hoteladdress}" required/>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Update Hotel</button>
+        </form>
+    </div>
+
+    <!-- Include Bootstrap JS (optional) -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

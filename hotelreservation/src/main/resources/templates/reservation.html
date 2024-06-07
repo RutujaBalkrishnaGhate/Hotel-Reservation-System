@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Reservation Page</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        .navbar {
+            background-color: #007BFF; /* Add your preferred color */
+        }
+
+        .navbar-brand, .nav-link {
+            color: #fff !important; /* Set text color to white */
+        }
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .reservation-container {
+            max-width: 400px;
+            margin: auto;
+            margin-top: 100px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        button {
+            width: 100%;
+        }
+    </style>
+</head>
+<nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <a class="navbar-brand" href="/userhome">InnSync</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/myreservations">My Reservations</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+<body>
+    <div class="reservation-container">
+        <h1>Make a Reservation</h1>
+        
+            <form th:action="@{'/book/' + ${reservation.hotel.hotelid}}" method="post" th:object="${reservation}">
+            <!-- Assuming 'reservation' is the object holding reservation information -->
+            
+            <input type="hidden" th:value="${reservation.hotel.hotelid}" />
+            
+
+            <div class="form-group">
+                <label for="hotelName">Hotel Name:</label>
+                <input type="text" class="form-control" id="hotelName" th:field="*{hotel.hotelname}" th:value="${reservation.hotel.hotelname}" readonly/>
+            </div>
+            
+            <div class="form-group">
+                <label for="contact">Contact:</label>
+                <input type="text" class="form-control" id="contact" th:field="*{hotel.hotelcontact}" th:value="${reservation.hotel.hotelcontact}" readonly/>
+            </div>
+
+            <div class="form-group">
+                <label for="checkInDate">Check In Date:</label>
+                <input type="date" class="form-control" id="checkInDate" th:field="*{checkInDate}" required/>
+            </div>
+
+            <div class="form-group">
+                <label for="checkOutDate">Check Out Date:</label>
+                <input type="date" class="form-control" id="checkOutDate" th:field="*{checkOutDate}" required/>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Book</button>
+        </form>
+    </div>
+
+    <!-- Include Bootstrap JS (optional) -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

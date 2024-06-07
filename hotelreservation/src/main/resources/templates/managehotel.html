@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Manage Hotels</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    
+    <style>
+    
+        .navbar {
+            background-color: #007BFF; /* Add your preferred color */
+        }
+
+        .navbar-brand, .nav-link {
+            color: #fff !important; /* Set text color to white */
+        }
+        
+        body {
+            background-color: #f8f9fa;
+        }
+        
+
+        .hotel-record {
+            max-width: 600px;
+            margin: auto;
+            margin-top: 20px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: relative; /* Make the container relative for absolute positioning */
+        }
+        
+
+        h1 {
+            text-align: center;
+            margin-top: 100px;
+        }
+        h2 {
+            text-align: center;
+            
+        }
+        
+
+        .record-field {
+            font-weight: bold;
+        }
+
+        .record-options {
+            text-align: right;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        .edit-btn, .delete-btn {
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body> 
+   <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <a class="navbar-brand" href="#">InnSync</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/addhotel">Add Hotel</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/managehotel">Manage Hotel</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/manageusers">Manage Users</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/">Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+    
+
+
+    <h1 class="text-center">Manage Hotels</h1>
+
+    <div th:each="hotel : ${hotellist}" class="hotel-record">
+        <div class="record-field">Hotel Name:</div>
+        <h2 th:text="${hotel.hotelname}"></h2>
+
+        <div class="record-field">Contact:</div>
+        <p th:text="${hotel.hotelcontact}"></p>
+
+        <div class="record-field">Email:</div>
+        <p th:text="${hotel.hotelemail}"></p>
+
+        <div class="record-field">City:</div>
+        <p th:text="${hotel.hotelcity}"></p>
+
+        <div class="record-field">Address:</div>
+        <p th:text="${hotel.hoteladdress}"></p>
+
+        <div class="record-options">
+            <a class="btn btn-warning edit-btn" th:href="@{'/updatehotel/' + ${hotel.hotelid}}">Edit</a>   
+            <form th:action="@{/deletehotel/{hotelid}(hotelid=${hotel.hotelid})}" method="get" style="display: inline;">
+                <button type="submit" class="btn btn-danger delete-btn">Delete</button>
+            </form>         
+        </div>
+    </div>
+
+    <!-- Include Bootstrap JS (optional) -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+</body>
+</html>

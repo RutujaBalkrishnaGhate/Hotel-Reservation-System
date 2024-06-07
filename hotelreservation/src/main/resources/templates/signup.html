@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Hotel Reservation System - Sign Up</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+    
+         .navbar {
+            background-color: #007BFF; /* Add your preferred color */
+        }
+
+        .navbar-brand, .nav-link {
+            color: #fff !important; /* Set text color to white */
+        }
+        
+        body {
+            padding-top: 56px;
+            background-color: #f8f9fa;
+        }
+
+        .signup-container {
+            max-width: 400px;
+            margin: auto;
+            margin-top: 100px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #007BFF;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        button {
+            width: 100%;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px 0;
+            background-color: #f8f9fa;
+            position: relative;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <a class="navbar-brand" href="/">InnSync</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/signin">User Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/signup">User Sign Up</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/adminlogin">Admin Login</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Sign Up Form Section -->
+<div class="container signup-container">
+    <h1>Sign Up</h1>
+    
+    <form th:action="@{/addeduser}" method="post" th:object="${user}">
+        <div class="form-group">
+            <label class="control-label" for="firstName">First Name:</label>
+            <input id="firstName" class="form-control" th:field="*{firstName}" required autofocus="autofocus" />
+        </div>
+
+        <div class="form-group">
+            <label class="control-label" for="lastName">Last Name:</label>
+            <input id="lastName" class="form-control" th:field="*{lastName}" required autofocus="autofocus" />
+        </div>
+
+        <div class="form-group">
+            <label class="control-label" for="email">Email:</label>
+            <input id="email" class="form-control" th:field="*{email}" type="email" required autofocus="autofocus" />
+        </div>
+
+        <div class="form-group">
+            <label class="control-label" for="password">Password:</label>
+            <input id="password" class="form-control" th:field="*{password}" type="password" required autofocus="autofocus" />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Sign Up</button>
+    </form>
+
+    <div class="form-group">
+        <span>Already have an account? <a href="/signin">Login here</a></span>
+    </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+    <p>&copy; 2023 InnSync</p>
+</div>
+
+<!-- Bootstrap JS (optional) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
